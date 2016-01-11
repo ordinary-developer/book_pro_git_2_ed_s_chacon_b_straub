@@ -1,0 +1,42 @@
+ rewriting history
+ #################
+
+ changing the last commit
+ ========================
+
+ to change the last commit: 
+ --------------------------------
+ | git commit --amend		|
+ --------------------------------
+ It's like a very small rebase - don't ammend you last commit
+ if you've already pushed it 
+
+
+ chaning multiple commit message
+ ===============================
+
+ if you want to change the last three commit messagse
+ --------------------------------
+ | git rebase -i HEAD~3		|
+ --------------------------------
+ (keep in mind that you're actually designating four (4) commits ago,
+  the parent of the last commit you want to edit:)
+  you will see these commits listed in the opposite order then log command
+
+ change the work 'pick' to the word 'edit' for each of the commit 
+ you want the script to stop after
+
+ type
+ --------------------------------
+ | git commit --amend		|
+ --------------------------------
+ change the commit message, and exit the editor
+
+ then, run
+ --------------------------------
+ | git rebase --continue	|
+ --------------------------------
+ 
+ and repeat these stepsf for each commit you change to edit
+ 
+  
