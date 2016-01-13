@@ -38,5 +38,43 @@
  --------------------------------
  
  and repeat these stepsf for each commit you change to edit
- 
-  
+
+
+ reordering commits
+ ==================
+
+ to change the order of commits, simply in your rebase script move the strings with necessary
+ commits to necessary position and then continue rebaseing
+
+ to remove the commit from history simply delete it from your rebasing script
+ and then continue rebasing
+
+
+ squashing commits
+ =================
+
+ to squash a series of commits down into a single commit, in your rebasing script
+ use the "squash" keyword for all commits except the upper commit you want
+ to squash (the upper commit must be "pick")
+
+ when you save and exit the editor, Git applies all three changes and then puts you back
+ into the editor to merge the three commit messags
+
+ when you save that you will have one commit instead of your old three commits
+
+
+ splitting a commit
+ ==================
+
+ to split the commit,
+ - in your rebasing script mark it as "edit", then save and exit
+   your rebasing script
+ - git reset HEAD^
+ - git add file_for_1_st_new_series_commit //(the lowermost commit in the series in log)
+ - git commit -m "1_st_new_series_commit"
+ - git add file_for_2_nd_new_series_commit // (more upper commit in the series in log)
+ - git commit -m "2_nd_new_series_commit"
+ ...
+ - git add file_for_N_th_new_series_commit // (the highest commit in the series in log)
+ - git commit -m "N_th_new_series_commit" // (ending)
+ - git rebase --continue
