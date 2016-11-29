@@ -18,7 +18,7 @@ Creating branches
 -----------------
 
 The next command  
-```git
+```
 $ git branch branch-name
 ```  
 will create a new branch (a new pointer at the same commit
@@ -27,12 +27,12 @@ you're currently on) based on the current branch.
 HEAD is a pointer to the local branch you're currently on.
 
 To switch to the branch-name:  
-```git
+```
 $ git checkout branch-name
 ```
 
 To create and switch to the new branch:  
-```git
+```
 $ git checkout -b branch-name
 ```
 
@@ -44,12 +44,12 @@ Merging branches
 
 To merges your current branch (contents of your current branch) with
 the branch-name branch:  
-```git
+```
 $ git merge branch-name
 ```  
 
 To delete the branch with the name "branch-name":  
-```git
+```
 $ git branch --delete branch-name
 ```
 
@@ -63,25 +63,25 @@ them cleanly.
 
 After  
 - typing:  
-  ```git
+  ```
   $ git checkout master
   $ git checkout -b iss53
   ```  
 - editing the file "filename":  
 - typing:  
-  ```git
+  ```
   $ git checkout master
   $ git checkout -b hotfix
   ```  
 - editing the same file "filename":  
 - typing:  
-  ```git
+  ```
   $ git checkout master
   $ git merge hotfix
   $ git checkout iss53
   ```  
 - editing the same file "filename":  
-  ```git
+  ```
   $ git checkout master
   $ git merge iss53
   ```
@@ -89,7 +89,7 @@ After
 you will see info about a merge conflict.
 
 You can see conflict files by  
-```git
+```
 $ git status
 ```
 
@@ -119,12 +119,12 @@ In order to resolve the conflict, you have to
   yourself (after that the "<<<<<<<", "=======", ">>>>>>>" must be
   completely removed);
 - type for each conflicted file:  
-  ```git
+  ```
   $ git add file
   ```  
 - type (if the last operation was successful) to finalize 
   the merge commit:  
-  ```git
+  ```
   $ git commit
   ```  
   you will see an editor with a commit message.
@@ -134,20 +134,20 @@ Showing branches
 ----------------
 
 To show all branches:  
-```git
+```
 $ git branch --color
 ```  
 (a * means the branch you are currently on).
 
 To show the branches that you have merged into the branch
 you're currently on:  
-```git
+```
 $ git branch --merged
 ```
 
 To show the brances that you have not merged into the branch
 you're currently on:  
-```git
+```
 $ git branch --no-merged
 ```
 
@@ -156,30 +156,30 @@ Remote branches
 ---------------
 
 Push the branch (in our case "serverfix") to the server:  
-```git
+```
 $ git push origin serverfix
 // or
 $ git push push origin serverfix:serverfix
 ```
 
 To copy pointers to server branches that you can't modify:  
-```git
+```
 $ git fetch origin
 ```
 
 To merge this work into your current working branch you can run:  
-```git
+```
 $ git merge origin/serverfix
 ```
 
 and for the master branch:  
-```git
+```
 $ git merge origin/master
 ```
 
 If you want your own serverfix branch that you can work on,
 you can base it off your remote branch:  
-```git
+```
 $ git checkout -b serverfix origin/serverfix
 ```  
 that will create what is called a "tracking branch" 
@@ -191,14 +191,14 @@ to a remote branch.
 If you're on a tracking branch and type "git pull",
 Git automatically knows which server to fetch from 
 and branch to merge into. Also it is a synonym for this command  
-```git
+```
 $ git checkout --track origin/serverfix
 ```
 
 If you already have a local branch and want to set it
 to a remote branch you just pulled down, or want to change 
 the upstream branch you're tracking, type  
-```git
+```
 $ git branch --set-upstream origin/serverfix
 // or
 $ git branch -u origin/serverfix
@@ -207,38 +207,38 @@ $ git branch -u origin/serverfix
 When you have a tracking branche set up, you can reference it with 
 the @{upstream} or @{u} shorthand. So if you're on the master branch
 and it's tracking origin/master, you can say something like  
-```git
+```
 $ git merge @{upstream}
 ```  
 instead of  
-```git
+```
 $ git merge origin/master
 ```
     
 To show full information about branches:  
-```git
+```
 $ git branch -vv
 // or
 $ git branch --verbose --verbose
 ```
 
 To show remote branches:  
-```git
+```
 $ git branch --remote
 ```
 
 To show all branches:  
-```git
+```
 $ git branch --all
 ```
 
 To take all from all remote servers:  
-```git
+```
 $ git fetch --all
 ```
 
 To delete your serverfix branch from the server:  
-```git
+```
 $ git push origin --delete serverfix
 ```
 
@@ -248,25 +248,25 @@ Rebasing
 
 Instead of merging you can use rebasing:
 - create a new brach from the master branch  
-  ```git
+  ```
   $ git checkout -b experiment" 
   ```  
 - edit some file  
 - commit changes  
-  ```git
+  ```
   $ git commit --all --message 'Add some functionality'
   ```  
 - go to the master branch  
-  ```git
+  ```
   $ git checkout master
   ```  
 - edit some file  
 - commit the changes  
-  ```git
+  ```
   $ git commit --all --message 'Add some other functionality'
   ```  
 - rebase  
-  ```git
+  ```
   $ git checkout experiment 
   $ git rebase master
   $ git checkout master         
@@ -279,25 +279,25 @@ Rebase merge conflict
 
 You can resolve merge conflict during rebasing:  
 - create a new brach from the master branch  
-  ```git
+  ```
   $ git checkout -b experiment" 
   ```  
 - edit a file  
 - commit changes  
-  ```git
+  ```
   $ git commit --all --message 'Add some functionality'
   ```  
 - go to the master branch  
-  ```git
+  ```
   $ git checkout master
   ```  
 - edit the same file  
 - commit the changes  
-  ```git
+  ```
   $ git commit --all --message 'Add some other functionality'
   ```  
 - rebase  
-  ```git
+  ```
   $ git checkout experiment 
   $ git rebase master
   // edit a conflict file
@@ -307,7 +307,7 @@ You can resolve merge conflict during rebasing:
   ```
 
 For pulling from the server:   
-```git
+```
 $ git pull --rebase
 // or
 $ git fetch && git rebase teamone/master
@@ -324,7 +324,7 @@ Getting rebased from server
 ---------------------------
 
 To rebase on the server branch:  
-```git
+```
 $ git pull --rebase
 // or
 $ git fetch && 
