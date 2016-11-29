@@ -1,8 +1,9 @@
 Git Branching
 =============
 
-Base
-----
+
+Base material
+-------------
 
 When you make a commit, Git stores a commit object that contains 
 a pointer to the snapshot of the content you staged. A branch in Git
@@ -16,22 +17,22 @@ automatically.
 Creating branches
 -----------------
 
-The next command
-```
+The next command  
+```git
 $ git branch branch-name
-```
+```  
 will create a new branch (a new pointer at the same commit
 you're currently on) based on the current branch.
  
 HEAD is a pointer to the local branch you're currently on.
 
-To switch to the branch-name:
-```
+To switch to the branch-name:  
+```git
 $ git checkout branch-name
 ```
 
-To create and switch to the new branch:
-```
+To create and switch to the new branch:  
+```git
 $ git checkout -b branch-name
 ```
 
@@ -42,13 +43,13 @@ Merging branches
 ----------------
 
 To merges your current branch (contents of your current branch) with
-the branch-name branch:
-```
+the branch-name branch:  
+```git
 $ git merge branch-name
-```
+```  
 
-To delete the branch with the name "branch-name":
-```
+To delete the branch with the name "branch-name":  
+```git
 $ git branch --delete branch-name
 ```
 
@@ -60,40 +61,40 @@ If you changed the same part of the same file differently in the two
 branches you're merging together, Git won't be able to merge
 them cleanly.
 
-After
-- typing  
-  ```
+After  
+- typing:  
+  ```git
   $ git checkout master
   $ git checkout -b iss53
-  ```
-- editing the file "filename"
-- typing  
-  ```
+  ```  
+- editing the file "filename":  
+- typing:  
+  ```git
   $ git checkout master
   $ git checkout -b hotfix
-  ```
-- editing the same file "filename"
-- typing
-  ```
+  ```  
+- editing the same file "filename":  
+- typing:  
+  ```git
   $ git checkout master
   $ git merge hotfix
   $ git checkout iss53
-  ```
-- editing the same file "filename"
-  ```
+  ```  
+- editing the same file "filename":  
+  ```git
   $ git checkout master
   $ git merge iss53
   ```
 
 you will see info about a merge conflict.
 
-You can see conflict files by
-```
+You can see conflict files by  
+```git
 $ git status
 ```
 
 You can have one or more conflict files.
-These files have the next structure:
+These files have the next structure:  
 ```
  -----------------------------------------------
  | text ... text (may be and may be not)       |
@@ -104,49 +105,49 @@ These files have the next structure:
  | >>>>>>> [merge-branch-name]                 |
  | text ... text (my be and may be not)        |
  -----------------------------------------------
-```
+```  
 This means the version in HEAD (your master branch,
 because that was what you had checked out when you ran
 your merge command) is the top part of the block 
 (everything between "<<<<<<< HEAD" and " ======= "),
 while the version in your "merge-branch-name" branch
 looks like everything in the bottom part 
-(everything between "=======" and ">>>>>>> [merge-branch-name]")
+(everything between "=======" and ">>>>>>> [merge-branch-name]").
 
-In order to resolve the conflict, you have to
+In order to resolve the conflict, you have to  
 - either choose one side or the other or merge (edit) the contents
-  yourself. After that the "<<<<<<<", "=======", ">>>>>>>" must be
-  completely removed.
-- type for each conflicted file 
-  ```
+  yourself (after that the "<<<<<<<", "=======", ">>>>>>>" must be
+  completely removed);
+- type for each conflicted file:  
+  ```git
   $ git add file
-  ```
+  ```  
 - type (if the last operation was successful) to finalize 
-  the merge commit
-  ```
+  the merge commit:  
+  ```git
   $ git commit
   ```  
-  you will see an editor with a commit message
+  you will see an editor with a commit message.
 
 
 Showing branches
 ----------------
 
-To show all branches: 
-``` 
+To show all branches:  
+```git
 $ git branch --color
-```
+```  
 (a * means the branch you are currently on).
 
 To show the branches that you have merged into the branch
-you're currently on:
-```
+you're currently on:  
+```git
 $ git branch --merged
 ```
 
 To show the brances that you have not merged into the branch
-you're currently on:
-```
+you're currently on:  
+```git
 $ git branch --no-merged
 ```
 
@@ -154,33 +155,33 @@ $ git branch --no-merged
 Remote branches
 ---------------
 
-push the branch (in our case "serverfix") to the server:
-```
+Push the branch (in our case "serverfix") to the server:  
+```git
 $ git push origin serverfix
 // or
 $ git push push origin serverfix:serverfix
 ```
 
-To copy pointers to server branches that you can't modify:
-```
+To copy pointers to server branches that you can't modify:  
+```git
 $ git fetch origin
 ```
 
-To merge this work into your current working branch you can run:
-```
+To merge this work into your current working branch you can run:  
+```git
 $ git merge origin/serverfix
 ```
 
-and for the master branch:
-```
+and for the master branch:  
+```git
 $ git merge origin/master
 ```
 
 If you want your own serverfix branch that you can work on,
-you can base it off your remote branch:
-```
+you can base it off your remote branch:  
+```git
 $ git checkout -b serverfix origin/serverfix
-```
+```  
 that will create what is called a "tracking branch" 
 (an "upstream branch").
 
@@ -189,15 +190,15 @@ to a remote branch.
 
 If you're on a tracking branch and type "git pull",
 Git automatically knows which server to fetch from 
-and branch to merge into. Also it is a synonym for this command
-```
+and branch to merge into. Also it is a synonym for this command  
+```git
 $ git checkout --track origin/serverfix
 ```
 
 If you already have a local branch and want to set it
 to a remote branch you just pulled down, or want to change 
-the upstream branch you're tracking, type
-```
+the upstream branch you're tracking, type  
+```git
 $ git branch --set-upstream origin/serverfix
 // or
 $ git branch -u origin/serverfix
@@ -205,66 +206,67 @@ $ git branch -u origin/serverfix
 
 When you have a tracking branche set up, you can reference it with 
 the @{upstream} or @{u} shorthand. So if you're on the master branch
-and it's tracking origin/master, you can say something like
-```
+and it's tracking origin/master, you can say something like  
+```git
 $ git merge @{upstream}
-```
-instead of
-```
+```  
+instead of  
+```git
 $ git merge origin/master
 ```
     
-To show full information about branches:
-```
+To show full information about branches:  
+```git
 $ git branch -vv
 // or
 $ git branch --verbose --verbose
 ```
 
-To show remote branches:
-```
+To show remote branches:  
+```git
 $ git branch --remote
 ```
 
-To show all branches:
-```
+To show all branches:  
+```git
 $ git branch --all
 ```
 
-To take all from all remote servers:
-```
+To take all from all remote servers:  
+```git
 $ git fetch --all
 ```
 
-To delete your serverfix branch from the server:
+To delete your serverfix branch from the server:  
+```git
+$ git push origin --delete serverfix
 ```
-git push origin --delete serverfix
-```
+
 
 Rebasing
 --------
 
 Instead of merging you can use rebasing:
-- create a new brach from the master branch
-```
-$ git checkout -b experiment" 
-```
-- edit some file
-- commit changes
-  ```
+- create a new brach from the master branch  
+  ```git
+  $ git checkout -b experiment" 
+  ```  
+- edit some file  
+- commit changes  
+  ```git
   $ git commit --all --message 'Add some functionality'
-  ```
+  ```  
 - go to the master branch  
-  ```
+  ```git
   $ git checkout master
-  ```
-- edit some file
-- commit the changes
-  ```
+  ```  
+- edit some file  
+- commit the changes  
+  ```git
   $ git commit --all --message 'Add some other functionality'
-  ```
-- rebase 
-  ```
+  ```  
+- rebase  
+  ```git
   $ git checkout experiment 
   $ git rebase master
   $ git checkout master         
@@ -275,28 +277,27 @@ $ git checkout -b experiment"
 Rebase merge conflict
 ---------------------
 
-You can resolve merge conflict during rebasing
-- create a new brach from the master branch
-  ```
+You can resolve merge conflict during rebasing:  
+- create a new brach from the master branch  
+  ```git
   $ git checkout -b experiment" 
-  ```
-- edit a file
-- commit changes
-  ```
+  ```  
+- edit a file  
+- commit changes  
+  ```git
   $ git commit --all --message 'Add some functionality'
-  ```
+  ```  
 - go to the master branch  
-  ```
+  ```git
   $ git checkout master
-  ```
-- edit the same file
-- commit the changes
-  ```
+  ```  
+- edit the same file  
+- commit the changes  
+  ```git
   $ git commit --all --message 'Add some other functionality'
-  ```
-
-- rebase
-  ```
+  ```  
+- rebase  
+  ```git
   $ git checkout experiment 
   $ git rebase master
   // edit a conflict file
@@ -305,11 +306,12 @@ You can resolve merge conflict during rebasing
   $ git merge experiment
   ```
 
- 
- "git pull --rebase"
- or
- "git fetch" && "git rebase teamone/master"
-
+For pulling from the server:   
+```git
+$ git pull --rebase
+// or
+$ git fetch && git rebase teamone/master
+```
 
 **DO NOT REBASE COMMITS THAT EXISTS OUTSIDE YOUR REPOSITORY!!!**
 
@@ -321,8 +323,8 @@ your history, but never rebase anything you've pushed somewhere.
 Getting rebased from server
 ---------------------------
 
-To rebase on the server branch:
-```
+To rebase on the server branch:  
+```git
 $ git pull --rebase
 // or
 $ git fetch && 
