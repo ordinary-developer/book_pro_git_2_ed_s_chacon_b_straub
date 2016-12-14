@@ -22,6 +22,10 @@ Basic usage
 $ git clone https://gitlab.com/book_synopses_and_code_samples/pro_git_2_ed_s_chacon_b_straub.git
 ```
 
+```
+$ git clone https://github.com/book_pro_git_2_ed_s_chacon_b_straub.git
+```
+
  
 License
 -------
