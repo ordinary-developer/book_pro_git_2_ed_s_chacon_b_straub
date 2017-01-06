@@ -1,8 +1,8 @@
 Bundling
 ========
 
-Common
-------
+Base material
+-------------
 
 The "bundle" command will package up everything that would normally
 be pushed over the wire with a "git push" command into a binary file
